@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1> <%= album.title %> </h1>
+    <form action = "bands/:band_id/albums" method = "post">
+      <%= auth_token %>
+      <label for = "new-album-title">Album Title:</label>
+      <input id = "new-album-title" type = "text" name = "album[title]">
+    <% if album.persisted? %>
+    <input type = "hidden" name = "_method" value = "patch" >
+    <% end %>
+    <br>
+    <label for = band-names>Band:</label>
+      <select id = band-names name = "album[band_id]">
+      <% bands.each do |b| %>
+      <option value = <%= b.id %> <% "selected" if album.band_id == b.id %>>
+        <%= b.name %> </option>
+        <% end %>
+      </select>
+      <br>
+
+      <label> Live <input type = "radio" name = "album[los]" value = "live"
+          <%= "checked" if album.los == "live" %>> </label>
+
+      <label> Studio <input type = "radio" name = "album[los]" value = "studio"
+            <%= "checked" if album.los == "studio" %>> </label>
+
+
+      <br>
+      <% if album.persisted? %>
+        <input type = "submit" value = "Update Track">
+      <% else %>
+        <input type = "submit" value = "Submit Track">
+      <% end %>
+
+  </form>
+  </body>
+</html>

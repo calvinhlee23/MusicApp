@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  <form action = "/bands" method = "post">
+    <%= auth_token %>
+    <% if band.persisted? %>
+    <h1> Update <%= band.name.upcase %> </h1>
+    <input type = "hidden" name = "_method" value = "patch" >
+    <% else %>
+    <h1> Submit a Band </h1>
+    <% end %>
+
+    <label for = band-name>Band Name</label>
+      <input type = "text" name = "band[name]"
+      value = <%= "#{band.name}" if band.persisted?  %>>
+      <br>
+
+      <% if band.persisted? %>
+        <input type = "submit" value = "Update Track">
+      <% else %>
+        <input type = "submit" value = "Submit Track">
+      <% end %>
+
+  </form>
+  </body>
+</html>

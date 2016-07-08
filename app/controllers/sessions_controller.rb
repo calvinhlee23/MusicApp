@@ -13,10 +13,9 @@ class SessionsController < ApplicationController
     elsif user.nil?
       flash.now[:error] = "email/password combination cannot be found"
     else
-      log_in_user!
-      flash.now[:json] = "welcome back!"
+      login!(user)
+      redirect_to bands_url
     end
-    redirect_to user_url(user)
   end
 
   def destroy
@@ -26,15 +25,5 @@ class SessionsController < ApplicationController
     redirect_to #main page
   end
 
-  private
-  def logged_in?
-    return true if @current_user
-    false
-  end
-
-  def log_in_user!
-    @current_user.reset_session_token!
-    login!(@current_user)
-  end
 
 end

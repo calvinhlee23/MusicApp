@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>List of All Bands</h1>
+    <ul>
+      <% @bands.each do |b| %>
+      <li><%= link_to "#{b.name}", band_url(b) %> </li>
+      <% end %>
+    </ul>
+    <br>
+
+    <%= button_to "Submit a New Band", new_band_url %>
+  </body>
+</html>

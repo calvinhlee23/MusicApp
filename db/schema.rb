@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160708034333) do
   create_table "albums", force: :cascade do |t|
     t.string   "title",      null: false
     t.integer  "band_id",    null: false
+    t.string   "los",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

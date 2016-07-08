@@ -1,0 +1,17 @@
+<html>
+<h1> <%= @band.name.upcase %></h1>
+<h2> List of Albums: </h2>
+
+
+<p>
+  <ol>
+    <% @band.albums.each do |a| %>
+      <li><%= link_to "#{a.title}", album_url(a) %></li>
+    <% end %>
+  </ol>
+  <%= link_to "Submit a New Album", new_band_albums_url(@band) %>
+</p>
+
+<%= button_to('Delete This Band', band_url(@band),
+        method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+</html>

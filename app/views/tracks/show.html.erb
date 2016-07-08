@@ -1,0 +1,15 @@
+<htapplication/destroy withml>
+<h1> <%= @track.title %></h1>
+<h2> from <%= @track.album.title %></h2>
+<h3>Track: <%= @track.bor %></h3>
+
+<p>
+  Lyrics: <br>
+  <%= @track.lyrics %>
+</p>
+
+<br>
+<%= button_to "Look Up Album", album_url(@track.album) %>
+<%= button_to('Delete Track', track_url(@track),
+        method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+</html>

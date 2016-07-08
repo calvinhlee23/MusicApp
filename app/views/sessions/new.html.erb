@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome to Music App</h1>
+    <form action = "/sessions" method = "post">
+      <%= auth_token %>
+      <label for = "login-email">User Email: </label>
+      <input id = "login-email"
+        name = "user[email]", type = "text">
+
+      <label for = "login-password">Password: </label>
+
+      <input id = "login-password"
+        name = "user[password]", type = "text">
+      <br>
+
+      <input type = "submit" value = "Login">
+    </form>
+    <br>
+  <p> New to Our Website? </p>
+  <%= link_to "Create an Account", new_user_url%>
+  </body>
+</html>

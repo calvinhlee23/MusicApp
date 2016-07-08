@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   validates :password_digest, presence: {message: "password cannot be blank"}
   validates :email, uniqueness: true, presence: true
   validates :session_token, uniqueness: true, presence: true
