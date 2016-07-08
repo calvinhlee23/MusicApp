@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
-  validates :notes, :track_id, :user_id, presence: true
+  validates :content, :track_id, :user_id, presence: true
 
   belongs_to(
     :track,

@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160708102500) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.text     "notes",      null: false
+    t.text     "content",    null: false
     t.integer  "track_id",   null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false

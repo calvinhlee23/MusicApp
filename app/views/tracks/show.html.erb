@@ -1,16 +1,22 @@
 <html>
 <h1> <%= @track.title %></h1>
 <h2> from <%= @track.album.title %></h2>
-<h3>Track: <%= @track.bor %></h3>
+<%= link_to "Look Up Album", album_url(@track.album) %>
+<h3>Track Type: <%= @track.bor %></h3>
 
 <p>
-  Lyrics: <br>
+  <h3>Lyrics: </h3>
   <%= @track.lyrics %>
 </p>
 
+
+<h3>Notes: </h3>
+<% @track.notes.each do |note| %>
+  <%= render "notes/note", note: note %>
+<% end %>
+<%= render "notes/form", track: @track %>
+
 <br>
-<%= link_to "Look Up Album", album_url(@track.album) %>
-<br><br>
 <%= button_to('Delete Track', track_url(@track),
-        method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+  method: :delete) %>
 </html>

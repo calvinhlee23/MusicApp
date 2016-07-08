@@ -8,4 +8,10 @@ class Track < ActiveRecord::Base
     class_name: 'Album',
     foreign_key: :album_id
   )
+
+  has_many(
+    :notes,
+    class_name: "Note",
+    foreign_key: :track_id
+  )
 end
