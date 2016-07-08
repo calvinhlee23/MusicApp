@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
     if logged_in?
-      flash.now[:error] = "already logged in"
+      flash[:errors] = "already logged in"
     elsif user.nil?
-      flash.now[:error] = "email/password combination cannot be found"
+      flash[:errors] = "email/password combination cannot be found"
     else
       login!(user)
       redirect_to bands_url
@@ -19,10 +19,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    user = @current_user
-    logout!(user)
-    flash.now[:json] = "bye!"
-    redirect_to #main page
+      current_user.reset_session_token!
+      session[:session_token] = nil
+      redirect_to new_session_url
   end
 
 

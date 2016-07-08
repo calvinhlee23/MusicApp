@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if logged_in? %>
+    Hello, <%= @current_user.email %>
+    <%= button_to 'Log Out', session_url, method: "delete" %>
+  <% end %>
 
-<%= yield %>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
 
+  <%= yield %>
 </body>
 </html>

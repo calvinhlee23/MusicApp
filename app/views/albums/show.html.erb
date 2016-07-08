@@ -1,16 +1,20 @@
 <html>
-<h1> <%= @album.title %></h1>
-<h2> by <%= @album.band.name %></h2>
 
-<ol>
-  <% @album.tracks.each do |t| %>
-    <li><%= link_to "#{t.title}", track_url(t) %></li>
-  <% end %>
+  <h1> <%= @album.title %></h1>
+  <h2> by <%= @album.band.name %></h2>
+
+  <ol>
+    <% @album.tracks.each do |t| %>
+      <li><%= link_to "#{t.title}", track_url(t) %></li>
+    <% end %>
+    <br>
+    <%= link_to "Add a New Track To This Album", new_album_tracks_url(@album) %>
+  </ol>
   <br>
-</ol>
-<%= link_to "Add A New Track", new_album_tracks_url(@album) %>
-<br>
-<%= button_to "Look Up This Band", band_url(@album.band) %>
-<%= button_to('Delete Album', album_url(@album),
-        method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+  <%= link_to "Look Up This Band", band_url(@album.band) %>
+  <br>
+  <br>
+  <%= button_to('Delete Album', album_url(@album),
+          method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }) %>
+
 </html>
